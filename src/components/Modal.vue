@@ -41,8 +41,7 @@ export default {
 }
 
 .modal h1 {
-  /* color: #03cfb4; */
-  color: #fff;
+  color: #03cfb4;
   border: none;
   padding: 0;
 }
@@ -81,6 +80,4 @@ export default {
 .modal.sale a {
   color: #fff;
 }
-
-
 </style>

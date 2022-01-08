@@ -1,17 +1,25 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <div v-if="showModal">
-    <Modal theme="sale" @close="toggleModal">
+  <teleport to="#modals" v-if="showModal">
+    <Modal @close="toggleModal">
       <template v-slot:links>
         <a href="#">sign up now</a>
         <a href="#">more info</a>
       </template>
-      <h2>Ninja Giveaway!</h2>
+      <h1>Ninja Giveaway!</h1>
       <p>Grab your ninja swag for half price!</p>
     </Modal>
-  </div>
+  </teleport>
+  <teleport to="#modals" v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Sign up to to the newsletter</h1>
+      <p>For updated and promo codes!</p>
+    </Modal>
+  </teleport>
+
   <button @click.alt="toggleModal">open modal(alt)</button>
+  <button @click="toggleModalTwo">open modal</button>
 </template>
 
 <script>
@@ -24,21 +32,23 @@ export default {
   data() {
     return {
       title: 'my first vue app :)',
-      header: 'sign up for the giveaway',
-      text: 'grab your ninja swag for half price!',
-      showModal: false
+      showModal: false,
+      showModalTwo: false,
     }
   },
   methods: {
     toggleModal(){
       this.showModal = !this.showModal
+    },
+    toggleModalTwo(){
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
 </script>
 
 <style>
-#app {
+#app, #modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
